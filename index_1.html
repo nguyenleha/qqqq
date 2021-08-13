@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <title>Add/Remove Input Fields Dynamically with jQuery</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        var max_fields = 1000; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button");
+        var deletealla = $("#deleteall"); //Add button ID
+        var next = $("#session");
+
+        var x = 1; //initlal text box count
+
+        $(next).click(function (e) { //on add input button click
+            e.preventDefault();
+                
+             
+               var ParX = sessionStorage.getItem("tongX");
+               var x = parseInt(ParX);
+               console.log(ParX);
+               window.location.href="index_2.html";
+               for (var i = 2; i <= x; i++) {
+                   var c = document.getElementById(`idX${i}`).value;
+                    sessionStorage.setItem(`giatriX${i}`,c)
+               }
+        
+        
+        });
+    
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+                x++;
+                var idX = `idX${x}`;
+                //text box increment
+                $(wrapper).append( `<div class="deleteallaaa"><input id=${idX} type="text"><button onclick="tru()" class="remove_field">Remove</button></div>`); //add input box
+                
+            }
+            sessionStorage.setItem(`tongX`,x)
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault();
+            if(x>1){
+                $(this).parent('div').remove();
+                x--;
+            }
+        })
+
+        $(wrapper).on("click", ".remove_all", function (e) { //user click on remove text
+            e.preventDefault();
+            if(x>1){
+                $(".deleteallaaa").remove();
+                x=1;
+                $(wrapper).append( '<div class="deleteallaaa"><input type="text"><button onclick="tru()" class="remove_field">Remove</button></div>');
+            }
+        })
+       
+    });
+    function cong(){
+        var t = document.getElementById("so").value;
+        if(parseInt(t)<1000){
+            document.getElementById("so").value=parseInt(t)+1;
+        }
+         
+    }
+    function tru(){
+        var t = document.getElementById("so").value;
+        if(parseInt(t)>1){
+            
+            document.getElementById("so").value=parseInt(t)-1;
+        }
+    }
+    function truall(){
+        var t = document.getElementById("so").value;     
+   document.getElementById("so").value=1;
+        
+    }
+</script>
+
+
+<style>
+.input_fields_wrap{
+    counter-reset: my-counter;
+}
+.input_fields_wrap .deleteallaaa {
+    counter-increment: my-counter;
+}
+.input_fields_wrap .deleteallaaa::before{
+    content: counter(my-counter);
+}
+</style>
+<body>
+    <input class="so" id="so" value="0" readonly>
+    
+    <div class="input_fields_wrap" >
+        <button class="add_field_button" onclick="cong()">Add More Fields</button>
+        <button class="remove_all" onclick="truall()">Removeall</button>
+        
+        <div class="deleteallaaa"><input id=${idX} type="text"><button onclick="tru()" class="remove_field">Remove</button></div>
+      
+
+       
+
+    </div>
+    <a id="session" href="index_2.html">next</a>
+    
+    <!-- <div>
+        <p>id=+ counter + </p>
+        <input type="text" name="mytext[]" />
+        <a href="#" class="remove_field">Remove</a>
+    </div> -->
+
+
+
+    
+</body>
+
+</html>

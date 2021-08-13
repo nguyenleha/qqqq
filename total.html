@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input class="txt" type="number">
+    <input class="txt" type="number">
+    <input class="txt" type="number">
+    <input class="txt" type="number">
+    <input class="txt" type="number">
+    <br>
+    <br>
+    <input id="sum" type="number"> -->
+
+    <!-- <script>
+        $(document).ready(function(){
+    
+            //iterate through each textboxes and add keyup
+            //handler to trigger sum event
+            $(".txt").each(function() {
+    
+                $(this).keyup(function(){
+                    calculateSum();
+                });
+            });
+    
+        });
+    
+        function calculateSum() {
+    
+            var sum = 0;
+            //iterate through each textboxes and add the values
+            $(".txt").each(function() {
+    
+                //add only if the value is number
+                if(!isNaN(this.value) && this.value.length!=0) {
+                    sum += parseFloat(this.value);
+                }
+    
+            });
+            //.toFixed() method will roundoff the final sum to 2 decimal places
+            $("#sum").val(sum.toFixed(2));
+        }
+    </script> -->
+
+
+
+
+
+    <input class="txt" id="w" onkeyup="myFunction()" type="number">
+    <input class="txt" id="h" onkeyup="myFunction()" type="number">
+    <input class="txt" id="l" onkeyup="myFunction()" type="number">
+   
+    <br>
+    <br>
+    <input id="sum" type="number"> -->
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("sum");
+            var w =
+            x.value = x.value.toUpperCase();
+          }
+    </script>
+
+
+ 
+
+
+
+
+
+<!-- 
+    Qty1 : <input onblur="findTotal()" type="text" name="qty" id="qty1"/><br>
+    Qty2 : <input onblur="findTotal()" type="text" name="qty" id="qty2"/><br>
+    Qty3 : <input onblur="findTotal()" type="text" name="qty" id="qty3"/><br>
+    Qty4 : <input onblur="findTotal()" type="text" name="qty" id="qty4"/><br>
+    Qty5 : <input onblur="findTotal()" type="text" name="qty" id="qty5"/><br>
+    Qty6 : <input onblur="findTotal()" type="text" name="qty" id="qty6"/><br>
+    Qty7 : <input onblur="findTotal()" type="text" name="qty" id="qty7"/><br>
+    Qty8 : <input onblur="findTotal()" type="text" name="qty" id="qty8"/><br>
+    <br><br>
+    Total : <input type="text" name="total" id="total"/>
+    
+    
+        <script type="text/javascript">
+    function findTotal(){
+        var arr = document.getElementsByName('qty');
+        var tot=0;
+        for(var i=0;i<arr.length;i++){
+            if(parseInt(arr[i].value))
+                tot += parseInt(arr[i].value);
+        }
+        document.getElementById('total').value = tot;
+    }
+    
+        </script> -->
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Exercise #1</td>
+                <td>
+                    <input type="text" class="txt input-mini" />
+                </td>
+                <td>
+                    <input type="text" class="txt input-mini" />
+                </td>
+                <td>
+                    <input type="text" class="txt input-mini" />
+                </td>
+            </tr>
+            <tr>
+                <td>Exercise #2</td>
+                <td>
+                    <input type="text" class="txt input-mini" />
+                </td>
+                <td>
+                    <input type="text" class="txt input-mini" />
+                </td>
+                <td>
+                    <input type="text" class="txt input-mini" />
+                </td>
+            </tr>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="row-fluid">
+            <div class="span5">
+                <div class="form-inline">
+                    <label>Sum of Quarters' Total</label>
+                    <input id="sum" type="text" class="input-medium" />
+                </div>
+            </div>
+            <div class="span7">
+                <div class="form-inline">
+                    <label>Quarters' Total</label>
+                    <input type="text" class="input-mini" />
+                    <input type="text" class="input-mini" />
+                    <input type="text" class="input-mini" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            //iterate through each textboxes and add keyup
+            //handler to trigger sum event
+            $(".txt").each(function () {
+                $(this).keyup(function () {
+                    calculateSum();
+                });
+            });
+        });
+
+        function calculateSum() {
+            var sum = 0;
+            //iterate through each textboxes and add the values
+            $(".txt").each(function () {
+                //add only if the value is number
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    sum += parseFloat(this.value);
+                }
+            });
+            
+            var sumQ = [];
+            for (var i=1; i<=3; i++) {
+                sumQ[i] = 0;
+                $('td:nth-child('+(i+1)+')').find(".txt").each(function () {
+                    if (!isNaN(this.value) && this.value.length != 0) {
+                        sumQ[i] += parseFloat(this.value);
+                    }
+                });
+                $(".span7").find('input').eq(i-1).val(sumQ[i].toFixed(2));
+            }
+
+            //.toFixed() method will roundoff the final sum to 2 decimal places
+            $("#sum").val(sum.toFixed(2));
+        }
+    </script> -->
+</body>
+</html>

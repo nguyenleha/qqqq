@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" name="name" class="name" placeholder="Lập Trình Không Khó" pattern="^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$" required />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password" class="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" pattern="[a-zA-Z0-9!@#$%^&*]{8,}" required />
+        </div>
+        <div>
+          <label for="mail">Mail:</label>
+          <input type="email" name="mail" class="mail" placeholder="abc@ltkk.vn" pattern="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$" required />
+        </div>
+        <div>
+          <label for="phone">Number:</label>
+          <input type="tel" name="phone" placeholder="0273456789" pattern="^(0[234][0-9]{8}|1[89]00[0-9]{4})$" required />
+        </div>
+        <div>
+          <label for="website">Website:</label>
+          <input type="url" name="website" placeholder="https://nguyenvanhieu.vn" pattern="(http|https)://.+" required />
+        </div>
+        <div>
+          <label for="date">Date:</label>
+          <input type="date" name="date" min="2019-01-01" max="2050-12-31" required />
+        </div>
+        <div>
+          <label for="onechar">Max five char:</label>
+          <input type="text" name="onechar" placeholder="x" pattern="[a-zA-Z]{,5}" required />
+        </div>
+        <div>
+          <label for="onechar">Four digit num:</label>
+          <input type="text" name="onechar" placeholder="0000" pattern="^[0-9]{4}" required />
+        </div>
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+</body>
+</html>

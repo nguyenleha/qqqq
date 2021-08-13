@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title>Add/Remove Input Fields Dynamically with jQuery</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var remove = $("#session");
+
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+
+        var text = $("#text");
+        var ParX = sessionStorage.getItem("tongX");
+        var x = parseInt(ParX);
+
+        for (var i = 1; i <= x; i++) {
+            var getValue = sessionStorage.getItem(`giatriX${i}`);
+            $(wrapper).append(`<div id="giatriX${i}" class="deleteallaaa"><p>${getValue}</p> <button onclick="tru()" class="remove_field">Remove</button></div>`); //add input box
+        }
+
+        $(remove).click(function (e) { //on add input button click
+            e.preventDefault();
+
+            var ParX = sessionStorage.getItem("tongX");
+            var x = parseInt(ParX);
+            for (var i = 1; i <= x; i++) {
+                sessionStorage.removeItem(`giatriX${i}`);
+            }
+            sessionStorage.clear();
+
+        })
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault();
+            if (x > 1) {
+                $(this).parent('div').remove();
+                x--;
+
+                var parentX = $(this).parent('div').attr("id");
+                sessionStorage.removeItem(`${parentX}`);
+                sessionStorage.setItem(`tongX`, x);
+
+            } else if (x == 1) {
+                $(this).parent('div').remove();
+                x--;
+
+                var parentX = $(this).parent('div').attr("id");
+                sessionStorage.removeItem(`${parentX}`);
+                sessionStorage.setItem(`tongX`, x);
+                sessionStorage.removeItem("tongX");
+            }
+
+        })
+
+        $(remove).click(function (e) { //on add input button click
+            e.preventDefault();
+
+            var ParX = sessionStorage.getItem("tongX");
+            var x = parseInt(ParX);
+            for (var i = 1; i <= x; i++) {
+                sessionStorage.removeItem(`giatriX${i}`);
+            }
+            sessionStorage.clear();
+
+        })
+
+        function tru() {
+            var t = document.getElementById("so").value;
+            if (parseInt(t) > 1) {
+
+                document.getElementById("so").value = parseInt(t) - 1;
+            }
+        }
+
+
+
+    });
+</script>
+
+
+<style>
+    .input_fields_wrap {
+        counter-reset: my-counter;
+    }
+
+    .input_fields_wrap .deleteallaaa {
+        counter-increment: my-counter;
+    }
+
+    .input_fields_wrap .deleteallaaa::before {
+        content: counter(my-counter);
+    }
+</style>
+
+<body>
+    <div class="input_fields_wrap">
+
+        <p id="text">Make text</p>
+        <button id="session">removeSession</button>
+
+    </div>
+</body>
+
+</html>
